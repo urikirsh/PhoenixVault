@@ -1,4 +1,0 @@
-certoraRun contracts/PhoenixHarness.sol --verify PhoenixHarness:specifications/base_layer.spec --solc ./solc-static-linux --settings -enableStorageVariableUnpacking=false --staging master
-certoraRun contracts/PhoenixHarness.sol --verify PhoenixHarness:specifications/key_separation_layer.spec --solc ./solc-static-linux --settings -enableStorageVariableUnpacking=false --staging master
-certoraRun contracts/PhoenixHarness.sol --verify PhoenixHarness:specifications/recovery_layer.spec --solc ./solc-static-linux --settings -enableStorageVariableUnpacking=false --staging master
-certoraRun contracts/PhoenixHarness.sol --verify PhoenixHarness:specifications/tier_one_security_layer.spec --solc ./solc-static-linux --settings -enableStorageVariableUnpacking=false --staging master
