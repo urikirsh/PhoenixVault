@@ -11,7 +11,7 @@ methods {
 }
 
 /////////////////////////////////////// Property #15 //////////////////////////////////////////////
-rule no_overcommitments_cancellations {
+rule no_overcommitments_or_overflows_cancellations {
     env e;
     require e.msg.sender != 0;
     sinvoke check_rep(e);
@@ -25,7 +25,7 @@ rule no_overcommitments_cancellations {
     sinvoke f(e, id);
 
     bool final_overflow = sinvoke isThereCommitmentOverflow();
-    assert !final_overflow, "cannot commit to pay more money than Phoenix has - OVERFLOW";
+    assert !final_overflow, "overflow never occurs";
 
     uint final_expected_commitments = sinvoke getTotalCommitments();
     uint final_actual_commitments = sinvoke getTotalLedgerCommitments();
@@ -36,7 +36,7 @@ rule no_overcommitments_cancellations {
         "cannot commit to pay more money than Phoenix has";
 }
 
-rule no_overcommitments_rest {
+rule no_overcommitments_or_overflows_rest {
     env e;
     require e.msg.sender != 0;
     sinvoke check_rep(e);
@@ -50,7 +50,7 @@ rule no_overcommitments_rest {
     sinvoke f(e, arg);
 
     bool final_overflow = sinvoke isThereCommitmentOverflow();
-    assert !final_overflow, "cannot commit to pay more money than Phoenix has - OVERFLOW";
+    assert !final_overflow, "overflow never occurs";
 
     uint final_expected_commitments = sinvoke getTotalCommitments();
     uint final_actual_commitments = sinvoke getTotalLedgerCommitments();
