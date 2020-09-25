@@ -32,9 +32,7 @@ rule no_overcommitments_or_overflows_cancellations {
     require (final_expected_commitments == final_actual_commitments);
 
     uint final_balance = sinvoke getBalance();
-    bool name_req = f.name == "cancelMyTransaction" || f.name == "withdraw" 
-                    || f.name == "cancelTransactionById";
-    assert final_actual_commitments > final_balance => name_req, 
+    assert final_actual_commitments <= final_balance, 
         "cannot commit to pay more money than Phoenix has";
 }
 
